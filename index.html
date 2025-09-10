@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Explore Sarawak</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --primary-bg: #0C0C0C;
+      --card-bg: #181818;
+      --accent: #FFC300;
+      --text-main: #fff;
+      --text-secondary: #d3d3d3;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-main);
+    }
+    header {
+      background: #181818;
+      padding: 1rem 2rem 0.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--accent);
+    }
+    header img {
+      height: 48px;
+      background: #222;
+      border-radius: 8px;
+      padding: 4px 10px;
+    }
+    nav a {
+      color: var(--text-main);
+      text-decoration: none;
+      margin-left: 2rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      font-size: 1.1rem;
+      padding: 8px 18px;
+      border-radius: 8px;
+      transition: background 0.2s, color 0.2s;
+    }
+    nav a:hover {
+      background: var(--accent);
+      color: #111;
+    }
+    .container {
+      padding: 2rem 1rem;
+      max-width: 98vw;
+      width: 98vw;
+      margin: 0 auto;
+    }
+    .main-banner {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 2rem;
+      background: var(--card-bg);
+      border-radius: 14px;
+      box-shadow: 0 4px 18px rgba(21, 21, 21, 0.4);
+      padding: 2.5rem 2rem;
+    }
+    .main-banner-content {
+      flex: 1;
+    }
+    .main-banner-content h1 {
+      font-size: 2.2rem;
+      margin: 0 0 0.5rem 0;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: var(--accent);
+      text-shadow: 1px 3px 12px #0009;
+    }
+    .main-banner-content p {
+      color: var(--text-secondary);
+      margin: 1.3rem 0 1.5rem 0;
+      font-size: 1.15rem;
+      max-width: 480px;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+    .main-banner-content .btn {
+      background: var(--accent);
+      color: #222;
+      padding: 0.9rem 2.1rem;
+      border: none;
+      border-radius: 7px;
+      font-size: 1.08rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      box-shadow: 0 2px 10px #0005;
+      letter-spacing: 1px;
+    }
+    .main-banner-content .btn:hover {
+      background: #fff;
+      color: var(--accent);
+    }
+    /* Angled image styling */
+    .angled-image-container {
+      width: 420px;
+      height: 260px;
+      overflow: hidden;
+      clip-path: polygon(16% 0, 100% 0, 100% 100%, 0% 100%);
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      background: #000;
+      min-width: 280px;
+    }
+    .angled-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: none;
+      display: block;
+    }
+    .social-section {
+      margin-top: 2.5rem;
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 2rem 1.4rem 2.5rem 1.4rem;
+      box-shadow: 0 4px 18px #0003;
+      border-top: 3px solid var(--accent);
+    }
+    .social-section h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-shadow: 0 2px 8px #0005;
+    }
+    .social-section .desc {
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+    }
+    .social-card {
+      background: #222;
+      border-radius: 10px;
+      overflow: hidden;
+      min-height: 190px;
+      box-shadow: 0 1px 10px #0007;
+      display: flex;
+      flex-direction: column;
+      color: var(--text-main);
+      border: 1px solid #333;
+    }
+    .social-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-bottom: 2px solid var(--accent);
+    }
+    .social-card .caption {
+      padding: 1rem 1rem 0.7rem 1rem;
+      font-size: 0.98rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+      background: #191919;
+      flex: 1;
+    }
+
+    /* SOCIAL ICONS ROW */
+    .social-icons-row {
+      display: flex;
+      justify-content: flex-end;
+      gap: 18px;
+      margin-top: 32px;
+      margin-bottom: 8px;
+      padding-right: 10px;
+    }
+    .social-icon-link svg {
+      color: #fff;
+      background: #232323;
+      border-radius: 50%;
+      padding: 6px;
+      box-shadow: 0 2px 10px #0003;
+      transition: color 0.2s, background 0.2s;
+    }
+    .social-icon-link:hover svg {
+      color: #FFC300;
+      background: #181818;
+    }
+
+    @media (max-width: 900px) {
+      .main-banner {
+        flex-direction: column;
+        padding: 1.3rem 1rem;
+      }
+      .angled-image-container {
+        width: 100%;
+        height: 220px;
+        min-width: unset;
+        margin-top: 1.5rem;
+      }
+      .social-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 650px) {
+      .container {
+        padding: 1rem;
+      }
+      .social-grid {
+        grid-template-columns: 1fr;
+      }
+      .angled-image-container {
+        height: 160px;
+      }
+      .social-icons-row {
+        justify-content: center;
+        padding-right: 0;
+      }
+    }
+    .social-icons-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+  margin-top: 0.4rem;
+  gap: 1rem;
+}
+
+.social-icons-text {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.social-icons-links {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.social-icon-link svg {
+  color:  #ffffff;
+  transition: color 0.2s, transform 0.2s;
+}
+.social-icon-link:hover svg {
+  color: #b8ad1f;
+  transform: scale(1.12);
+}
+@media (max-width: 700px) {
+  .social-icons-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+  .social-icons-links {
+    margin-top: 0.4rem;
+  }
+}
+  </style>
+</head>
+<body>
+  <header>
+    <img src="images/home_logo.png" alt="Sarawak Rainforest Logo">
+    <nav>
+      <a href="list.html">Homestays</a>
+      <!-- <a href="map.html">Map</a>
+      <a href="books.html">Booking</a> -->
+    </nav>
+  </header>
+  <div class="container">
+    <section class="main-banner">
+      <div class="main-banner-content">
+        <h1>EXPLORE SARAWAK</h1>
+        <p>
+          Discover the lush rainforests, vibrant cultures, and breathtaking adventures that await in Sarawak. From ancient caves to majestic rivers and unique wildlife, your journey to the heart of Borneo starts here!
+        </p>
+        <a class="btn" href="list.html">HOMESTAYS</a>
+      </div>
+      <div class="angled-image-container">
+        <img src="images/home/rainforest.webp" alt="Sarawak Rainforest">
+        <!-- Replace the src above with your own image if needed -->
+      </div>
+    </section>
+    <section class="social-section">
+      <h3>SOCIAL WALL</h3>
+      <div class="social-icons-row">
+        <span class="social-icons-text">
+          Join the conversation using <strong>#ExploreSarawak</strong>
+        </span>
+        <span class="social-icons-links">
+          <a href="https://www.instagram.com/innostay_sarawak/" target="_blank" aria-label="Facebook" class="social-icon-link">
+            <!-- Facebook SVG -->
+            <svg width="30" height="30" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12.072C22 6.491 17.523 2 12 2S2 6.491 2 12.072C2 17.067 5.656 21.065 10.438 21.942v-6.87H7.898v-2.807h2.54V9.845c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.632.775-1.632 1.567v1.888h2.773l-.443 2.807h-2.33v6.87C18.344 21.065 22 17.067 22 12.072z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/innostay_sarawak/" target="_blank" aria-label="Twitter" class="social-icon-link">
+            <!-- Twitter SVG -->
+            <svg width="30" height="30" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 5.924c-.793.352-1.646.591-2.544.697a4.48 4.48 0 001.965-2.476 8.905 8.905 0 01-2.826 1.082 4.473 4.473 0 00-7.62 4.077A12.687 12.687 0 013.16 4.85a4.475 4.475 0 001.384 5.965 4.42 4.42 0 01-2.027-.561v.057a4.474 4.474 0 003.587 4.384 4.493 4.493 0 01-2.021.077 4.478 4.478 0 004.178 3.112A8.974 8.974 0 012 19.538a12.646 12.646 0 006.839 2.005c8.207 0 12.705-6.801 12.705-12.705 0-.194-.004-.389-.013-.583A9.098 9.098 0 0024 4.59a8.848 8.848 0 01-2.54.697z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/innostay_sarawak/" target="_blank" aria-label="Instagram" class="social-icon-link">
+            <!-- Instagram SVG -->
+            <svg width="30" height="30" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.34 3.608 1.314.974.973 1.251 2.24 1.314 3.607.058 1.267.069 1.647.069 4.851s-.011 3.584-.069 4.85c-.063 1.367-.34 2.634-1.314 3.608-.974.974-2.241 1.252-3.608 1.314-1.266.058-1.646.069-4.85.069s-3.584-.011-4.85-.069c-1.367-.063-2.634-.34-3.608-1.314-.974-.974-1.251-2.241-1.314-3.608C2.175 15.647 2.163 15.267 2.163 12s.012-3.584.07-4.851c.062-1.366.34-2.633 1.314-3.607C4.521 2.573 5.788 2.295 7.155 2.233 8.421 2.175 8.801 2.163 12 2.163zm0-2.163C8.736 0 8.332.012 7.052.07c-1.74.08-3.07.368-4.197 1.495C1.125 2.72.836 4.05.757 5.79.7 7.07.688 7.474.688 12c0 4.526.012 4.93.07 6.21.079 1.74.368 3.07 1.495 4.197C2.72 22.875 4.05 23.164 5.79 23.243 7.07 23.3 7.474 23.312 12 23.312s4.93-.012 6.21-.07c1.74-.079 3.07-.368 4.197-1.495 1.127-1.127 1.416-2.457 1.495-4.197.058-1.28.07-1.684.07-6.21 0-4.526-.012-4.93-.07-6.21-.079-1.74-.368-3.07-1.495-4.197C21.28 1.125 19.95.836 18.21.757 16.93.7 16.526.688 12 .688z"/><circle cx="12" cy="12" r="3.2"/><circle cx="18.406" cy="5.594" r="1.44"/></svg>
+          </a>
+        </span>
+      </div>
+      <!-- Social media icons row END -->
+      <div class="social-grid">
+        <div class="social-card">
+          <a href="https://www.instagram.com/p/DNpgixzz6M8/" target="_blank">
+            <img src="images/home/KM_1.JPG" alt="KualaMedalam">
+          </a>
+          <div class="caption">#kampungkualamedalam #limbang #heritage #culture<br><br>Traditional heirlooms of Kampung Kuala Medalam—ceramic tempayan and brassware passed down through generations.</div>
+        </div>
+        <div class="social-card">
+          <a href="https://www.instagram.com/p/DNpg1Ovz0Ty/" target="_blank">
+            <img src="images/home/KM_2.JPG" alt="KualaMedalam">
+          </a>
+          <div class="caption">#kampungkualamedalam #longhouse #limbang #villagelife<br><br>A peaceful morning at the longhouse in Kampung Kuala Medalam—where culture and community thrive side by side.</div>
+        </div>
+        <div class="social-card">
+          <a href="https://www.instagram.com/p/DNphAtYz8tg/" target="_blank">
+            <img src="images/home/LI_1.JPG" alt="LongIman">
+          </a>
+          <div class="caption">#longiman #mulu #penan #handicraft<br><br>Discovering Penan craftsmanship at Long Iman—vibrant handwoven baskets that tell stories of tradition.</div>
+        </div>
+        <div class="social-card">
+          <a href="https://www.instagram.com/p/DNphGiRT_Ph/" target="_blank">
+            <img src="images/home/LI_2.JPG" alt="LongIman">
+          </a>
+          <div class="caption">#longiman #mulu #penan #handicraft<br><br>A quiet moment in Long Iman—learning the intricate skills of Penan women passed down through generations.</div>
+        </div>
+        <div class="social-card">
+          <a href="https://www.instagram.com/p/DNphMQhT_NU/" target="_blank">
+            <img src="images/home/PL_1.JPG" alt="RumanPatrickLibau">
+          </a>
+          <div class="caption">#rumanpatricklibau #niah #villagelife<br><br>Warm smiles from the children of Ruman Patrick Libau—genuine moments of joy in rural Niah.</div>
+        </div>
+        <div class="social-card">
+          <a href="https://www.instagram.com/p/DNphRiDT19Q/" target="_blank">
+            <img src="images/home/PL_2.JPG" alt="RumanPatrickLibau">
+          </a>
+          <div class="caption">#rumanpatricklibau #niah #longhouse<br><br>A glimpse into longhouse life at Ruman Patrick Libau—where generations live and stories linger in the air.</div>
+        </div>
+        <div class="social-card">
+          <a href="https://www.instagram.com/p/DNphV-dT1E2/" target="_blank">
+            <img src="images/home/PL_3.JPG" alt="RumanPatrickLibau">
+          </a>
+          <div class="caption">#rumanpatricklibau #niah #greenescape<br><br>Wandering the serene forest trails near Ruman Patrick Libau—every step wrapped in the rhythm of nature.</div>
+        </div>
+        <div class="social-card">
+          <a href="https://www.instagram.com/p/DNphaG2z_yL/" target="_blank">
+            <img src="images/home/PL_4.JPG" alt="RumanPatrickLibau">
+          </a>
+          <div class="caption">#niahcave #archaeology #traderscave<br><br>Uncovering 100,000 years of history—Trader’s Cave reveals Borneo’s ancient past through tools, shells, and marine life remains.</div>
+        </div>
+      </div>
+      
+    </section>
+  </div>
+</body>
+</html>
